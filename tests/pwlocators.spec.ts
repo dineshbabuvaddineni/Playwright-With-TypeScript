@@ -22,11 +22,11 @@ page.getByTestId() to locate an element based on its data-testid attribute (othe
 
 import {test,expect,Locator} from "@playwright/test"
 test("Verify Playwright Locators",async({page})=>{
-    await page.goto("https://www.flipkart.com/");
+    await page.goto("https://demo.nopcommerce.com");
 
     // 1. page.getByAltText() - identifies images (and similar elements) based on the alt attributes
     // use this locator when your element supports alt text as img and area elements.
-     const logo:Locator= page.getByAltText("Image");
+     const logo:Locator= page.getByAltText("nopCommerce demo store");
      await expect(logo).toBeVisible();
 
      //2. page.getByText() - Find an element by the text it contains. You can match by a substring , exact string or a regular expression.
@@ -42,5 +42,34 @@ test("Verify Playwright Locators",async({page})=>{
 
      await expect(page.getByText("Welcome to our store")).toBeVisible(); //full string /full text
      await expect(page.getByText("Welcome to")).toBeVisible(); //provided substring
-     await expect(page.getByText(/Welcome\s+To\s+Our\s+Store/i)).toBeVisible(); //PRegular Expression
+     await expect(page.getByText(/Welcome\s+To\s+Our\s+Store/i)).toBeVisible(); //Regular Expression
+
+     //3. page.getByRole() - Locating by Role (role is not an attribute)
+     /* Role locators include buttons, checkboxes, headings,links,lists,tables,and many more and follow w3c specifications for ARIA Role.
+     prefer for interactive elements like buttons,checkboxes,links,lists,headings,tables,etc.,
+     
+     we have two types of rules implicitly defined role and explicitly defined role.
+     */
+
+     //await page.getByRole("link",{name:'Register'}).click();
+     // Wait for navigation
+     //await page.waitForURL("**/register");
+     //await expect(page.getByRole("heading",{name:'Register'})).toBeVisible(); //you can also use by getText()
+     //await expect(page.getByText("Register")).toBeVisible();
+
+     //4)page.getByLabel() to locate a form control by associated
+     //when to use: Ideal for form fields with visible labels.
+
+     //Page.getByLabel('First name:').type("John"); //type deprecated
+
+     // await page.getByLabel("First name:").fill("John");
+     // await page.getByLabel('Last name:').fill("kennedy");
+     // await page.getByLabel('Email:').fill("abc@gmail.com");
+
+     //5. page.getByPlaceholder() - Finds element with a given placeholder text.
+     //Best for inputs without a label but having a placeholder
+
+     await page.getByPlaceholder("Search store").fill('Apple MacBook Pro');
+
+
 })

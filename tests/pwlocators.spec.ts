@@ -70,6 +70,8 @@ test("Verify Playwright Locators",async({page})=>{
      //Best for inputs without a label but having a placeholder
 
      await page.getByPlaceholder("Search store").fill('Apple MacBook Pro');
+     await page.getByPlaceholder("Search store").fill('Apple MacBook Pro');
+     
 
 
 })

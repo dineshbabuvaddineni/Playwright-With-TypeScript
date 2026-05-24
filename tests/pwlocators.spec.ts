@@ -70,7 +70,31 @@ test("Verify Playwright Locators",async({page})=>{
      //Best for inputs without a label but having a placeholder
 
      await page.getByPlaceholder("Search store").fill('Apple MacBook Pro');
-     await page.getByPlaceholder("Search store").fill('Apple MacBook Pro');
+
+     //6. page.getByTitle() to locate an element by its title attribute.
+     // when to use: when your element has a meaningful title attribute.
+
+     await page.goto("file:///C:/Users/Lenovo%20Laptop/Downloads/app.html");
+     // const link:Locator=page.getByTitle("Home page link");
+     // expect(link).toHaveText("Home");
+
+     await expect(page.getByTitle("Home page link")).toHaveText("Home");
+     await expect(page.getByTitle("HyperText Markup Language")).toHaveText("HTML");
+
+     // 7) page.getByTestId() to locate element based on its data-testid attribute(other attributes can be configured).
+     // when to use when text or role based locators are unstable or not suitable
+     //This property is customizable.
+
+     await expect(page.getByTestId("profile-email")).toHaveText("john.doe@example.com");
+     await expect(page.getByTestId("profile-name")).toHaveText("John Doe");
+
+
+
+
+
+
+      
+
      
 
 

@@ -5,7 +5,6 @@ css(Casacading style sheets)
 html+js+css
 
 2 types of css locators:
-
 1)absolute css locator
 2)relative css locator
 

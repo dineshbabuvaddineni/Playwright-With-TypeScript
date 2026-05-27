@@ -14,4 +14,32 @@ test("Xpath demo in playwright", async ({ page }) => {
         "xpath=//img[@alt='Tricentis Demo Web Shop']"
     );
     await expect(relativeLogo).toBeVisible();
+
+    // 3. contains()
+    const products:Locator=page.locator("//h2/a[contains(@href,'computer')]");
+    const productsCount:number=await products.count();
+    console.log("No of computer related products:",productsCount); //4
+    expect(productsCount).toBeGreaterThan(0);
+
+    //console.log(await products.textContent()); //Error:strict mode violation
+    console.log("First computer related product:", await products.first().textContent());
+    console.log("Last computer related product:", await products.last().textContent());
+    console.log("Nth computer related product:", await products.nth(3).textContent());  //Index is starting from 0(zero)
+
+    let productTitles:string[]=await products.allTextContents(); //getting all the matched products in to array
+    console.log("All commputer related products titles:",productTitles);
+
+    for(let pt of productTitles){
+        console.log(pt);
+    }
+
+
+    //4. start-wth()
+    const buildingProducts:Locator=page.locator("//h2/a[starts-with(@href,'/build')]");
+    const count:number=await buildingProducts.count();
+    expect(count).toBeGreaterThan(0);
+
+    //5. text()
+    const reglink:Locator=page.locator("//a[text()='Register']");
+    await expect(reglink).toBeVisible();
 });

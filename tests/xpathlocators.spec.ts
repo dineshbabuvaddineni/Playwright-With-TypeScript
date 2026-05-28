@@ -42,4 +42,15 @@ test("Xpath demo in playwright", async ({ page }) => {
     //5. text()
     const reglink:Locator=page.locator("//a[text()='Register']");
     await expect(reglink).toBeVisible();
+
+    //6. last()
+    const lastitem:Locator=page.locator("//div[@class='column follow-us']//li[last()]");
+    expect(lastitem).toBeVisible();
+    console.log("Text content of last element: ",await lastitem.textContent());
+
+    //7. position()
+    const positionitem:Locator=page.locator("//div[@class='column follow-us']//li[position()=3]");
+    expect(positionitem).toBeVisible();
+    console.log("Text content of positional element: ",await positionitem.textContent());
+
 });

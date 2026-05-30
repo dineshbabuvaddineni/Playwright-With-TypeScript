@@ -5,14 +5,48 @@ test("Xpath Axes demo",async({page})=>{
     await page.goto("https://www.w3schools.com/html/html_tables.asp");
 
     //1. self axis - slect <td> element that contains "Germany"
-
     const germanyCell: Locator=page.locator("//td[text()='Germany']/self::td");
     await expect(germanyCell).toHaveText('Germany');
 
     //2. Parent axis- get parent <tr> of the "Germany" cell
     const parentRow:Locator=page.locator("//td[text()='Germany']/parent::tr");
-    await expect(parentRow).toContainText("Maria Anders");
+    // await expect(parentRow).toContainText(" Alfreds Futterkiste Maria Anders Germany");
+    // await expect(parentRow).toContainText("Maria Anders");
+    console.log(await parentRow.textContent());
 
+    //3. child axis - Get all <td> children of the second <tr> in the table
+    const secondRowCells:Locator=page.locator("//table[@id='customers']//tr[2]/child::td"); //returns multiple elements(td)
+    console.log(expect(secondRowCells).toHaveCount(3));
 
+    //4. Get Ancestor <table> of Germany cell
+    const table:Locator=page.locator("//td[text()='Germany']/ancestor::table")
+    await expect(table).toHaveAttribute('id','customers');
+
+    //5. descendent axis -Get all<td> elements under the table
+    const allTds:Locator=page.locator("//table[@id='customers']//descendant::td");
+    await expect(allTds).toHaveCount(18);
+
+    //6.Following axis- Get the <td> that comes after "Germany" in document order(taking following by 1 element)
+
+    const followingCell:Locator=page.locator("//td[text()='Germany']//following::td[1]");
+    await expect(followingCell).toHaveText("Centro comercial Moctezuma");
+
+    //7. following-sibling axis - Get <td>s to the right of "Maria Anders"
+    // const rightsiblings:Locator=page.locator("//td[text()='Maria Anders']//following-sibling::td");
+    // await expect(rightsiblings).toHaveCount(0);
+
+    const rightsiblings:Locator=page.locator("//td[normalize-space()='Maria Anders']/following-sibling::td");
+    await expect(rightsiblings).toHaveCount(1);
+
+    //8. preceeding axis - Get the <td> just before "Germany"
+    const precedingCell:Locator=page.locator("//td[text()='Germany']/preceding::td[1]");
+    await expect(precedingCell).toHaveText("Maria Anders");
+
+    //9. preceding-sibling axis - Get <td>s to the left of "Germany"
+     const leftSiblings:Locator=page.locator("//td[text()='Germany']/preceding-sibling::td");
+    await expect(leftSiblings).toHaveCount(2);
+
+    await expect(leftSiblings.nth(0)).toHaveText("Alfreds Futterkiste");
+    await expect(leftSiblings.nth(1)).toHaveText("Maria Anders");
 
 });

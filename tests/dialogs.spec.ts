@@ -61,5 +61,5 @@ test.only("Prompt Dialog",async({page})=>{
     console.log("Output text:",text);
     await expect(page.locator('#demo')).toHaveText("Hello John! How are you today?");
     await page.waitForTimeout(2000);
-});
+}); 
 

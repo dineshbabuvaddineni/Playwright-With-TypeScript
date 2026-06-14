@@ -20,7 +20,4 @@ test("handle popups",async({browser})=>{
     await page.waitForLoadState(); //wait for page load completely
     await expect(page.locator('text=Congratulations')).toBeVisible();
     await page.waitForTimeout(5000);
-
-
-
-})
+});

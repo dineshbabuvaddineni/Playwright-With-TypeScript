@@ -16,7 +16,7 @@ test('Single file upload',async({page})=>{
 test.only('Multiple files upload',async({page})=>{
     await page.goto('https://testautomationpractice.blogspot.com/');
 
-    await page.locator('#multipleFilesForm').setInputFiles(['uploads/tstFile.pdf','uploads/tstFile2.pdf']);
+    await page.locator('#multipleFilesInput').setInputFiles(['uploads/testFile.pdf','uploads/testFile2.pdf']);
     await page.locator("button:has-text('Upload Multiple Files')").click();
 
     const msg=await page.locator('#multipleFilesStatus').textContent();

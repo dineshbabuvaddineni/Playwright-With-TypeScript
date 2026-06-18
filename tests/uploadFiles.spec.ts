@@ -23,6 +23,9 @@ test.only('Multiple files upload',async({page})=>{
     expect(msg).toContain('testFile.pdf');
     expect(msg).toContain('testFile2.pdf');
 
+    console.log("Files uploaded");
+    console.log(msg);
+
     await page.waitForTimeout(5000);
 })
 

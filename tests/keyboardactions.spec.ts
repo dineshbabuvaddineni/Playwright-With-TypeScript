@@ -12,7 +12,7 @@ await page.keyboard
 
 import {test,expect} from 'playwright/test';
 test('keyboard actions',async({page})=>{
-    await page.goto("https://testautomationpractice.blogspot.com/");
+    await page.goto("https://testautomationpractice.blogspot.com/"); 
     const input1=page.locator('#input1');
 
     //1) . focus on input 1

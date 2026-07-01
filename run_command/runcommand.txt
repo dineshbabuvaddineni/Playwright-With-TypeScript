@@ -1,0 +1,10 @@
+--> Codegen commands
+
+npx playwright codegen -o tests/codentest.spec.ts 
+npx playwright codegen --output tests/codentest.spec.ts
+
+url: https://www.demoblaze.com/index.html
+
+npx playwright codegen -o tests/codentest.spec.ts --device "iphone 15"
+npx playwright codegen -o tests/codentest.spec.ts --browser firefox
+npx playwright codegen -o tests/codentest.spec.ts --viewport-size "1280,720"

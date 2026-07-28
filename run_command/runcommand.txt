@@ -8,3 +8,10 @@ url: https://www.demoblaze.com/index.html
 npx playwright codegen -o tests/codentest.spec.ts --device "iphone 15"
 npx playwright codegen -o tests/codentest.spec.ts --browser firefox
 npx playwright codegen -o tests/codentest.spec.ts --viewport-size "1280,720"
+
+Trace Viewer command
+ npx playwright test tests/tracing.spec.ts --headed --trace on
+ npx playwright show-trace trace.zip
+
+flaky tests
+npx playwright test tests/flakytest.spec.ts --retries=3 

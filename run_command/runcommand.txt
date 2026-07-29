@@ -15,3 +15,9 @@ Trace Viewer command
 
 flaky tests
 npx playwright test tests/flakytest.spec.ts --retries=3 
+
+Grouping
+npx playwright test tests/grouping.spec.ts --grep {GroupName}
+
+Hooks
+npx playwright test tests/

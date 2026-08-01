@@ -13,6 +13,8 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  // grep:/@sanity/, //added by Dinesh to run only sanity tests
+  // grepInvert:/@regression/, //added by Dinesh to skip regression tests
 
   //To change the timeout globally for all tests (default is 30000 ms/30 secs) - by pavan
   //timeout:60000,
@@ -21,14 +23,15 @@ export default defineConfig({
   //expect:{timeout:10000},
 
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
    //retries:3, added by Dinesh
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  //workers: process.env.CI ? 1 : undefined,
+  workers:2, //added by Dinesh
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -52,14 +55,15 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      //fullyParallel: true
     },
 
-    /* {
+    /*{
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
-
-    {
+    */
+    /*{
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     }, */

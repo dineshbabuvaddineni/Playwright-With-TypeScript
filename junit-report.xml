@@ -1,0 +1,92 @@
+<testsuites id="" name="" tests="6" failures="2" skipped="0" errors="0" time="51.391506">
+<testsuite name="reporters.spec.ts" timestamp="2026-08-04T14:26:01.300Z" hostname="chromium" tests="3" failures="1" skipped="0" time="16.683" errors="0">
+<testcase name="logotest" classname="reporters.spec.ts" time="7.518">
+</testcase>
+<testcase name="title test" classname="reporters.spec.ts" time="4.454">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\reporters-title-test-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\reporters-title-test-chromium\video.webm]]
+
+[[ATTACHMENT|test-results\reporters-title-test-chromium\error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toContain(expected) // indexOf" type="expect.toContain">
+<![CDATA[  [chromium] › reporters.spec.ts:12:5 › title test ─────────────────────────────────────────────────
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "Demo Web Shop1"
+    Received string:    "Demo Web Shop"
+
+      11 |
+      12 | test('title test',async({page})=>{
+    > 13 |      expect(await page.title()).toContain("Demo Web Shop1");
+         |                                 ^
+      14 | });
+      15 |
+      16 | test('search test',async({page})=>{
+        at D:\AutomationWorkSpaces\PLAYWRIGHT_WORKSPACE\tests\reporters.spec.ts:13:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\reporters-title-test-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\reporters-title-test-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\reporters-title-test-chromium\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="search test" classname="reporters.spec.ts" time="4.711">
+</testcase>
+</testsuite>
+<testsuite name="reporters.spec.ts" timestamp="2026-08-04T14:26:01.300Z" hostname="firefox" tests="3" failures="1" skipped="0" time="19.157" errors="0">
+<testcase name="logotest" classname="reporters.spec.ts" time="7.773">
+</testcase>
+<testcase name="title test" classname="reporters.spec.ts" time="4.107">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results\reporters-title-test-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|test-results\reporters-title-test-firefox\video.webm]]
+
+[[ATTACHMENT|test-results\reporters-title-test-firefox\error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toContain(expected) // indexOf" type="expect.toContain">
+<![CDATA[  [firefox] › reporters.spec.ts:12:5 › title test ──────────────────────────────────────────────────
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "Demo Web Shop1"
+    Received string:    "Demo Web Shop"
+
+      11 |
+      12 | test('title test',async({page})=>{
+    > 13 |      expect(await page.title()).toContain("Demo Web Shop1");
+         |                                 ^
+      14 | });
+      15 |
+      16 | test('search test',async({page})=>{
+        at D:\AutomationWorkSpaces\PLAYWRIGHT_WORKSPACE\tests\reporters.spec.ts:13:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\reporters-title-test-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\reporters-title-test-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\reporters-title-test-firefox\error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="search test" classname="reporters.spec.ts" time="7.277">
+</testcase>
+</testsuite>
+</testsuites>

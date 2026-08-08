@@ -31,9 +31,18 @@ export default defineConfig({
    //retries:3, added by Dinesh
   /* Opt out of parallel tests on CI. */
   //workers: process.env.CI ? 1 : undefined,
-  workers:2, //added by Dinesh
+  workers:3, //added by Dinesh
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  //reporter: '[html',
+  reporter:[['html',{open:'always','outputFolder':'html-report'}],
+              // ['list'],
+              // ['line'],
+              // ['dot'],
+              // ['junit',{outputFile:'junit-report.xml'}],
+              // ['json',{outputFile:'results.json'}],
+              // ['allure-playwright'],
+              ['./my-custom-report.ts']
+            ], //added by dinesh
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
 
@@ -58,11 +67,11 @@ export default defineConfig({
       //fullyParallel: true
     },
 
-    /*{
+    {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
-    */
+    
     /*{
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },

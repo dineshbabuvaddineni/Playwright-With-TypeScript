@@ -5,15 +5,16 @@ test.beforeEach('launching app',async({page})=>{
 
 });
 
-test('logtest1',async({page})=>{
-    await expect(page.locator("img[alt='Tricentis Demo web shop']")).toBeVisible();
-})
+test('logotest',async({page})=>{
+    await expect(page.locator("img[alt='Tricentis Demo Web Shop']")).toBeVisible();
+});
 
-test('logtest1',async({page})=>{
-    await expect(page.title()).toContain('Demo Web Shop');
-})
-test('logtest1',async({page})=>{
-    await page.locator('#small-searchterms').fill('laptop');
+test('title test',async({page})=>{
+     expect(await page.title()).toContain("Demo Web Shop1");
+});
+
+test('search test',async({page})=>{
+    await page.locator('#small-searchterms').fill('laptop');  //fill the text in search 
     await page.locator('input[value="Search"]').click();
     await expect.soft(page.locator("h2 a").nth(0)).toContainText("laptop",{ignoreCase:true});
-})
+});
